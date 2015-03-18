@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="deff7290-3ffc-4a1a-becc-037707dac583" name="v1" linkedPackageId="d830e2c0-dc4b-40a8-a516-659ec80254c5" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="8dd7bed9-7667-4a0e-a12b-3afa22ba65f2" name="Usuário" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8a4a7546-11ec-4604-af63-ff92daa12bc1" />
+        <targetEnds>
+          <association Id="b08e6eba-b566-42f1-ac9e-8913be32466f" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Intala o App" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="bceddc5a-5838-4eaa-8c84-f322bdc21fa8" LastKnownName="Intalar o App" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0125aa61-7362-45ce-9a07-3ff6ef839641" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="504e3df6-8a22-40eb-9e52-818625b2514a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8ffe4733-d25e-461d-a651-a21c11fd47d3" name="Intala o App" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8d4586ab-5873-4e80-879e-d2cd0b77ede3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="15691bb0-a861-4614-bd2e-4d64aa7e7a69" />
+          </association>
+          <association Id="3e1216c5-d22a-49a7-a8bc-17a24119a4b5" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Ver o histórico de envios" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="61eb5e6f-2311-44be-a702-9d637887dd03" LastKnownName="Ver o histórico de envios" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="422d01cb-f4d5-446f-9146-59ab27f83dce" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5f592452-87a6-4609-b557-151c2fc40e59" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6e485a76-ee17-4d64-93d1-6939bf9e7f6e" name="Ver o histórico de envios" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="00330d1a-1185-4d6e-9fd6-5abda735abbf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="5f8c1a5f-8559-4ac2-8407-8ed55f8f118f" />
+          </association>
+          <association Id="3662a5ce-6192-4d6b-96df-96b088fafc9c" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Entrar na Aplicação" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="4fd3bc38-0ebc-45bc-a6b6-94a492c46540" LastKnownName="Entrar na Aplicação" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="63704396-a852-4999-9cd3-1c277e4a047f" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="7d91e9b7-b0d2-4823-8f65-e9f908b73065" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4ac7a53f-77ed-4845-a708-a8325ba7c3f9" name="Entrar na Aplicação" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8deffe92-03a0-4c9c-9482-9ff0480632b0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a862bc87-7f3e-433a-a71f-b41077c05829" />
+          </association>
+          <association Id="ee8abce9-31fc-4ad1-a7cb-307e4c7f1081" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Captura uma Foto" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="da8ab569-d29c-4ff5-b79a-848b771fdc61" LastKnownName="Captura uma Foto" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bdb3a209-c2fd-4f37-8c1c-0f3527b921cb" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="abfeea1e-4e90-437d-b338-b03dec3295ea" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ebc69e5c-7c8d-4e5d-bff6-328925a6f325" name="Captura uma Foto" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c8a40d33-a840-4f85-af35-8e4511e9b7e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6d968615-f2e4-475a-8c53-002ea5a77dc0" />
+          </association>
+          <association Id="07c8f5d6-ddb6-467c-be96-9e0af940b307" isDerived="false" sourceEndRoleName="Usuário" targetEndRoleName="Desvilcular conta do facebook" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3104db32-9c62-489c-a0a4-54774b0aae46" LastKnownName="Desvilcular conta do facebook" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a3433d81-46ef-4b44-9c76-bf401a70e7c4" name="Usuário" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ab7de9b3-78a5-4dad-acee-10fe1cbdf8b3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fe4d74ee-296a-436f-a921-37a26b979adf" name="Desvilcular conta do facebook" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="699703f5-1f14-41e3-88df-5b0399a19d17" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="416e5918-e373-40c0-a484-5af874cbb02f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="171b76f3-5238-4fa6-bf38-dcd75d85f6df" name="Ver Apresentação" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="47bbbf86-5c0d-4057-9106-aa12c7d37f67" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e1ff8b75-8a61-4b25-abc5-1eed50e3fa49" name="Vincula Conta do Facebook" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="246cc76e-c6af-43a0-9157-52195c797041" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="da8ab569-d29c-4ff5-b79a-848b771fdc61" name="Captura uma Foto" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e585efd0-029c-4716-91bb-162184c2e53b" />
+        <additions>
+          <include Id="b62bbdb2-d084-401c-ae0d-ffd86c0a9be9">
+            <useCaseMoniker Id="2217fe92-fab8-454e-997f-45c2d63b2b18" LastKnownName="Aplica Filtros" />
+            <elementDefinition Id="c7d808b6-10bf-4af5-842c-e73a2376421a" />
+          </include>
+          <include Id="d37b36f8-afa6-494d-960a-7964e22d2459">
+            <useCaseMoniker Id="32ee42c0-47b7-43f5-94f5-59bec6123ebb" LastKnownName="Carrega Foto para rede social" />
+            <elementDefinition Id="20b50393-1716-4f9f-a44b-94604279d123" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2217fe92-fab8-454e-997f-45c2d63b2b18" name="Aplica Filtros" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="11c00d58-89be-483c-a2b1-1eac8ea0de5f" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="32ee42c0-47b7-43f5-94f5-59bec6123ebb" name="Carrega Foto para rede social" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4393ff57-13ea-4c4f-99d1-8aade88c396e" />
+        <additions>
+          <include Id="e0e30497-c707-4b04-9c5d-208c2373b910">
+            <useCaseMoniker Id="6d9e9fb4-5b2a-49aa-9f02-dd4e45739923" LastKnownName="Defir privacidade da foto carregada" />
+            <elementDefinition Id="1dffb057-cee0-420c-9aa1-ea1660683e10" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="61eb5e6f-2311-44be-a702-9d637887dd03" name="Ver o histórico de envios" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a7254277-a16c-446b-b434-19582456ebb5" />
+        <additions>
+          <include Id="fd669064-b7e7-4ade-8454-db1a2a09a5de">
+            <useCaseMoniker Id="769558b2-6e46-4a16-bb7b-25f4f1ea3bc9" LastKnownName="Ver envios pendentes" />
+            <elementDefinition Id="171feca5-f122-43cb-8356-b31ed4173451" />
+          </include>
+          <include Id="3e71641d-c4a3-4680-9af7-82cda3db948c">
+            <useCaseMoniker Id="5445d64e-d463-4ca9-aa35-e1ac46848aa0" LastKnownName="Ver envios com sucesso" />
+            <elementDefinition Id="63d4a458-9317-492f-bd88-cda25335f467" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="5445d64e-d463-4ca9-aa35-e1ac46848aa0" name="Ver envios com sucesso" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="60406fa5-d1ec-4c01-aefc-7fa6b822c6d7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="769558b2-6e46-4a16-bb7b-25f4f1ea3bc9" name="Ver envios pendentes" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="45c68afb-e8c8-4c87-b139-71afac771901" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="10ceb5fe-611e-4f58-9717-650ffa53f5f1" name="Pular a apresentação" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f50184bd-6005-4110-aeba-aba755c09d13" />
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="6d9e9fb4-5b2a-49aa-9f02-dd4e45739923" name="Defir privacidade da foto carregada" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="45f02c3d-541a-4a4b-b132-da5f27096205" />
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="4fd3bc38-0ebc-45bc-a6b6-94a492c46540" name="Entrar na Aplicação" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="45d3418c-cca7-43d4-831c-fc280e4fadc5" />
+        <additions>
+          <include Id="a1ebee3b-c62e-4e80-9ae2-c7bed7c7b0b6">
+            <useCaseMoniker Id="171b76f3-5238-4fa6-bf38-dcd75d85f6df" LastKnownName="Ver Apresentação" />
+            <elementDefinition Id="dfa1016f-98d0-4a62-bac5-6ce8cd8e031a" />
+          </include>
+          <include Id="9af03123-c22d-4ea8-bea6-16085384c253">
+            <useCaseMoniker Id="10ceb5fe-611e-4f58-9717-650ffa53f5f1" LastKnownName="Pular a apresentação" />
+            <elementDefinition Id="f33fae4d-0c7d-4819-a46e-db581d0e05ff" />
+          </include>
+          <include Id="e6640867-34d4-4b4f-a71c-bc0073fca124">
+            <useCaseMoniker Id="e1ff8b75-8a61-4b25-abc5-1eed50e3fa49" LastKnownName="Vincula Conta do Facebook" />
+            <elementDefinition Id="28a95855-511b-4e30-b97e-aa8ccc807f50" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3104db32-9c62-489c-a0a4-54774b0aae46" name="Desvilcular conta do facebook" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fbfc6989-593f-4fc5-8497-6a5a64835936" />
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bceddc5a-5838-4eaa-8c84-f322bdc21fa8" name="Intalar o App" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="838b7aa5-a02c-40b8-be88-316dd64f8474" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="d830e2c0-dc4b-40a8-a516-659ec80254c5" name="ModelingProject1">
+    <elementDefinition Id="e8d3c903-a368-4cc5-be1c-ee7d7f7ce1ed" />
+    <profileInstances>
+      <packageHasProfileInstances Id="fc5936ba-8261-45fd-8490-d95b70300c4c">
+        <profileInstance Id="9544cd74-7b60-4a1c-8e75-2025a2dbbbef" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="719eb62e-309e-4c28-81b1-5efdbc23d891">
+        <profileInstance Id="7b972e72-138d-4bed-bfa6-a74cf61425eb" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
