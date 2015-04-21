@@ -73,7 +73,7 @@
             isAbstract="false">
             <useCaseMoniker
               Id="a7254277-a16c-446b-b434-19582456ebb5"
-              LastKnownName="Ver o histórico de envios"
+              LastKnownName="Ver o histórico de fotos"
               LastKnownLocation="ModelingProject1.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -262,7 +262,7 @@
             Id="20b50393-1716-4f9f-a44b-94604279d123">
             <useCaseMoniker
               Id="4393ff57-13ea-4c4f-99d1-8aade88c396e"
-              LastKnownName="Carrega Foto para rede social"
+              LastKnownName="Salvar Foto"
               LastKnownLocation="ModelingProject1.uml" />
           </include>
         </additions>
@@ -278,7 +278,7 @@
     <packageHasNamedElement>
       <useCase
         Id="4393ff57-13ea-4c4f-99d1-8aade88c396e"
-        name="Carrega Foto para rede social"
+        name="Salvar Foto"
         isAbstract="false"
         isLeaf="false">
         <additions>
@@ -295,7 +295,7 @@
     <packageHasNamedElement>
       <useCase
         Id="a7254277-a16c-446b-b434-19582456ebb5"
-        name="Ver o histórico de envios"
+        name="Ver o histórico de fotos"
         isAbstract="false"
         isLeaf="false">
         <additions>
