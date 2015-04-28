@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Environment;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -26,6 +28,18 @@ import java.util.Date;
  * A simple {@link Fragment} subclass.
  */
 public class CameraFragment extends Fragment implements View.OnClickListener, SurfaceHolder.Callback {
+
+    /**
+     * Conversion from screen rotation to JPEG orientation.
+     */
+    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
+
+    static {
+        ORIENTATIONS.append(Surface.ROTATION_0, 90);
+        ORIENTATIONS.append(Surface.ROTATION_90, 0);
+        ORIENTATIONS.append(Surface.ROTATION_180, 270);
+        ORIENTATIONS.append(Surface.ROTATION_270, 180);
+    }
 
     /**
      * Objeto que representa a câmera
@@ -124,6 +138,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
                     e.printStackTrace();
                 }
 
+                ajustaOrientacaoDaCamera();
+
                 // Inicia novamente o preview
                 camera.startPreview();
             }
@@ -156,6 +172,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try {
+            ajustaOrientacaoDaCamera();
             camera.setPreviewDisplay(holder);
             camera.startPreview();
         } catch (IOException e) {
@@ -183,6 +200,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
             }
 
             try {
+                ajustaOrientacaoDaCamera();
                 camera.setPreviewDisplay(holder);
                 camera.startPreview();
             } catch (IOException e) {
@@ -203,5 +221,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
 
+    }
+
+    private void ajustaOrientacaoDaCamera() {
+        Activity activity = getActivity();
+        int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+        camera.setDisplayOrientation(ORIENTATIONS.get(rotation));
     }
 }
