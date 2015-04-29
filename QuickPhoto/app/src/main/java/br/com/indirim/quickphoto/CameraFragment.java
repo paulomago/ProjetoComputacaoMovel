@@ -57,6 +57,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
      */
     private SurfaceView surfaceView;
 
+    private File picsDir;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -65,18 +67,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        File picsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "QuickPhoto");
-
-        if (!picsDir.mkdirs()) {
-            Log.e("CameraFragment", "Directory not created");
-        }
-
-        DateFormat df = new SimpleDateFormat("yyyyMMdd_hhmmss");
-        Date dt = new Date();
-
-        imageFile = new File(picsDir, "IMG_" + df.format(dt) + ".jpg");
-        camera = Camera.open();
-
         surfaceView = (SurfaceView) view.findViewById(R.id.cameraPreview);
         surfaceView.getHolder().addCallback(this);
 
@@ -84,21 +74,25 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        picsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "QuickPhoto");
+        if (!picsDir.mkdirs()) {
+            Log.e("CameraFragment", "Falha ao criar o diretório de foto da aplicação");
+        }
+        camera = Camera.open();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-
-        if (camera != null) {
-            camera.release();
-        }
+        releaseCamera();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-
-        if (camera != null) {
-            camera.release();
-        }
+        releaseCamera();
     }
 
     /**
@@ -145,6 +139,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
                 camera.startPreview();
             }
         };
+
+        DateFormat df = new SimpleDateFormat("yyyyMMdd_hhmmss");
+        Date dt = new Date();
+
+        imageFile = new File(picsDir, "IMG_" + df.format(dt) + ".jpg");
 
         // Tira uma foto. O callback fornecido é chamado assim que a imagem JPEG estiver disponível
         camera.takePicture(null, null, jpeg);
@@ -221,7 +220,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
      */
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        releaseCamera();
     }
 
     private void ajustaOrientacaoDaCamera() {
@@ -241,5 +240,15 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
         parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
 
         camera.setParameters(parameters);
+    }
+
+    private void releaseCamera()
+    {
+        if (camera!= null) {
+            camera.setPreviewCallback(null);
+            camera.stopPreview();
+            camera.release();
+            camera = null;
+        }
     }
 }
