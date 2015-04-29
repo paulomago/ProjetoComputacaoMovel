@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -226,6 +227,19 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     private void ajustaOrientacaoDaCamera() {
         Activity activity = getActivity();
         int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
+        Camera.Parameters parameters = camera.getParameters();
+
         camera.setDisplayOrientation(ORIENTATIONS.get(rotation));
+        parameters.setRotation(ORIENTATIONS.get(rotation));
+
+        List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
+
+        Camera.Size previewSize = previewSizes.get(0);
+        parameters.setPreviewSize(previewSize.width, previewSize.height);
+
+        List<String> focus = parameters.getSupportedFocusModes();
+        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
+
+        camera.setParameters(parameters);
     }
 }
