@@ -3,6 +3,7 @@ package br.com.indirim.quickphoto;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -124,6 +125,16 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
                         // Grava os bytes da imagem no arquivo onde a foto deve ser armazenada
                         fos = new FileOutputStream(imageFile);
                         fos.write(data);
+
+                        Activity activity = getActivity();
+
+                        // Mostra uma mensagem indicando que a foto foi tirada
+                        Toast.makeText(activity, "Foto gravada em " + imageFile.getPath(), Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent();
+                        intent.setClass(activity, MainActivity.class);
+                        intent.putExtra("br.com.indirim.quickphoto.IMAGE_PATH", imageFile.getPath());
+                        startActivity(intent);
                     } finally {
                         if (fos != null) {
                             fos.close();
@@ -147,11 +158,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
         // Tira uma foto. O callback fornecido é chamado assim que a imagem JPEG estiver disponível
         camera.takePicture(null, null, jpeg);
-
-        Activity activity = getActivity();
-
-        // Mostra uma mensagem indicando que a foto foi tirada
-        Toast.makeText(activity, "Foto gravada em " + imageFile.getPath(), Toast.LENGTH_LONG).show();
     }
 
     public static CameraFragment newInstance() {

@@ -1,16 +1,18 @@
 <resources>
-    <string name="app_name">QuickPhoto</string>
+    <string name="app_name">Quick Photo</string>
     <string name="title_activity_camera">Quick Photo</string>
 
     <string name="action_settings">Configurações</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Nova Foto</string>
+    <string name="title_section2">Fotos Salvas</string>
+    <string name="title_section3">Configurações</string>
+    <string name="title_section4">Tutorial</string>
+    <string name="title_section5">Sobre</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_example">Example action</string>
+    <string name="action_example">Action Example</string>
 </resources>
