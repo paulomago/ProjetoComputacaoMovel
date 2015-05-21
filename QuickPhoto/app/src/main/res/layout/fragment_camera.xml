@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="br.com.indirim.quickphoto.CameraFragment">
 
-
     <SurfaceView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,5 +24,19 @@
         android:adjustViewBounds="false"
         android:background="@android:color/transparent"
         android:clickable="true" />
+
+    <ImageButton
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:text="Effects"
+        android:id="@+id/effectsButton"
+        android:src="@drawable/fx_64"
+        android:padding="0dp"
+        android:adjustViewBounds="false"
+        android:layout_marginBottom="35dp"
+        android:clickable="true"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right|bottom"
+        android:layout_marginRight="10dp" />
 
 </FrameLayout>

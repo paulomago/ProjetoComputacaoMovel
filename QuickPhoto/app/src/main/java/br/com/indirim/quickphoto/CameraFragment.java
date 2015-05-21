@@ -16,6 +16,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.io.File;
@@ -58,7 +60,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
      */
     private SurfaceView surfaceView;
 
+    private ImageButton effectsButton;
+
     private File picsDir;
+
+    private Camera.Parameters cParameters;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,10 +72,22 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
         return inflater.inflate(R.layout.fragment_camera, container, false);
     }
 
+    Fragment effectsFragment;
+
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         surfaceView = (SurfaceView) view.findViewById(R.id.cameraPreview);
         surfaceView.getHolder().addCallback(this);
+
+        effectsButton = (ImageButton) view.findViewById(R.id.effectsButton);
+        effectsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Activity activity = getActivity();
+
+                //effectsFragment = (EffectsFragment)
+                //        getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+            }
+        });
 
         view.findViewById(R.id.photoButton).setOnClickListener(this);
     }
@@ -199,6 +217,11 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
      */
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        createCameraPreview(holder);
+    }
+
+    private void createCameraPreview(SurfaceHolder holder)
+    {
         if (holder.getSurface() != null) {
             try {
                 camera.stopPreview();
@@ -230,26 +253,28 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     }
 
     private void ajustaOrientacaoDaCamera() {
+        if (cParameters == null)
+            cParameters = camera.getParameters();
+
         Activity activity = getActivity();
         int rotation = activity.getWindowManager().getDefaultDisplay().getRotation();
-        Camera.Parameters parameters = camera.getParameters();
 
         camera.setDisplayOrientation(ORIENTATIONS.get(rotation));
-        parameters.setRotation(ORIENTATIONS.get(rotation));
+        cParameters.setRotation(ORIENTATIONS.get(rotation));
 
-        List<Camera.Size> previewSizes = parameters.getSupportedPreviewSizes();
+        List<Camera.Size> previewSizes = cParameters.getSupportedPreviewSizes();
 
         Camera.Size previewSize = getOptimalPreviewSize(
                 previewSizes,
                 getResources().getDisplayMetrics().widthPixels,
                 getResources().getDisplayMetrics().heightPixels);
 
-        parameters.setPreviewSize(previewSize.width, previewSize.height);
+        cParameters.setPreviewSize(previewSize.width, previewSize.height);
 
-        List<String> focus = parameters.getSupportedFocusModes();
-        parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
+        List<String> focus = cParameters.getSupportedFocusModes();
+        cParameters.setFocusMode(Camera.Parameters.FOCUS_MODE_INFINITY);
 
-        camera.setParameters(parameters);
+        camera.setParameters(cParameters);
     }
 
     private void releaseCamera()
