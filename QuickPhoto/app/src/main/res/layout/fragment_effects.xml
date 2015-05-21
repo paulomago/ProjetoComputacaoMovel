@@ -1,0 +1,53 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="br.com.indirim.quickphoto.EffectsFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right">
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/negativeButtom"
+            android:layout_gravity="center_horizontal"
+            android:background="#006633"
+            android:layout_marginBottom="10dp" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/monoButton"
+            android:layout_gravity="center_horizontal"
+            android:background="#330099"
+            android:layout_marginBottom="10dp" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/sepiaButton"
+            android:layout_gravity="center_horizontal"
+            android:background="#33CCCC"
+            android:layout_marginBottom="10dp" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/verticalButton"
+            android:layout_gravity="center_horizontal"
+            android:background="#993300"
+            android:layout_marginBottom="10dp" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/horizontalButton"
+            android:layout_gravity="center_horizontal"
+            android:background="#CC6699"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+
+</FrameLayout>
