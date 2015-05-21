@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 
 public class CameraActivity extends Activity {
-
+    // chamado quando a atividade e criada pela primira vez
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
