@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.io.File;
@@ -62,9 +63,24 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
     private ImageButton effectsButton;
 
+    private ImageButton negativeButton;
+    private ImageButton monoButton;
+    private ImageButton laplacianButton;
+    private ImageButton sephiaButton;
+    private ImageButton borderButton;
+    private ImageButton normalButton;
+
     private File picsDir;
 
     private Camera.Parameters cParameters;
+
+    private Camera.Parameters getCameraParameters()
+    {
+        if (cParameters == null)
+            cParameters = camera.getParameters();
+
+        return cParameters;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +89,27 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     }
 
     Fragment effectsFragment;
+    LinearLayout effects_container;
+
+    private void toggleButtonVisibility(ImageButton b)
+    {
+        if (b.getVisibility() == View.INVISIBLE)
+        {
+            b.setVisibility(View.VISIBLE);
+        } else {
+            b.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void toggleEffectButton()
+    {
+        toggleButtonVisibility(negativeButton);
+        toggleButtonVisibility(monoButton);
+        toggleButtonVisibility(laplacianButton);
+        toggleButtonVisibility(sephiaButton);
+        toggleButtonVisibility(borderButton);
+        toggleButtonVisibility(normalButton);
+    }
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
@@ -80,12 +117,52 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
         surfaceView.getHolder().addCallback(this);
 
         effectsButton = (ImageButton) view.findViewById(R.id.effectsButton);
+        negativeButton = (ImageButton) view.findViewById(R.id.negativeButton);
+        monoButton = (ImageButton) view.findViewById(R.id.monoButton);
+        laplacianButton = (ImageButton) view.findViewById(R.id.laplacianButton);
+        sephiaButton = (ImageButton) view.findViewById(R.id.sephiaButton);
+        borderButton = (ImageButton) view.findViewById(R.id.borderButton);
+        normalButton = (ImageButton) view.findViewById(R.id.normalButton);
+
         effectsButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                toggleEffectButton();
+            }
+        });
+        negativeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                getCameraParameters().setColorEffect(Camera.Parameters.EFFECT_NEGATIVE);
+                createCameraPreview(surfaceView.getHolder());
+            }
+        });
+        monoButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                getCameraParameters().setColorEffect(Camera.Parameters.EFFECT_MONO);
+                createCameraPreview(surfaceView.getHolder());
+            }
+        });
+        laplacianButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Activity activity = getActivity();
-
-                //effectsFragment = (EffectsFragment)
-                //        getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+                Toast.makeText(activity, "Laplacian filter", Toast.LENGTH_LONG).show();
+            }
+        });
+        sephiaButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                getCameraParameters().setColorEffect(Camera.Parameters.EFFECT_SEPIA);
+                createCameraPreview(surfaceView.getHolder());
+            }
+        });
+        borderButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Activity activity = getActivity();
+                Toast.makeText(activity, "Border filter", Toast.LENGTH_LONG).show();
+            }
+        });
+        normalButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                getCameraParameters().setColorEffect(Camera.Parameters.EFFECT_NONE);
+                createCameraPreview(surfaceView.getHolder());
             }
         });
 

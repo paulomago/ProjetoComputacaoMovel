@@ -25,18 +25,84 @@
         android:background="@android:color/transparent"
         android:clickable="true" />
 
-    <ImageButton
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:text="Effects"
-        android:id="@+id/effectsButton"
-        android:src="@drawable/fx_64"
-        android:padding="0dp"
-        android:adjustViewBounds="false"
-        android:layout_marginBottom="35dp"
-        android:clickable="true"
-        android:background="@android:color/transparent"
+    <LinearLayout
+        android:id="@+id/effects_container"
+        android:orientation="vertical"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
-        android:layout_marginRight="10dp" />
+        android:visibility="visible"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="40dp">
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/negativeButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_filter_b_and_w_black_48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/text_negative" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/monoButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_monochrome_photos_black_48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/text_mono" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/sephiaButton"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_filter_vintage_black_48dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/laplacianButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_texture_black_48dp"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/borderButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_crop_free_black_48dp"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/normalButton"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_photo_black_48dp"
+            android:background="@android:color/transparent" />
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="Effects"
+            android:id="@+id/effectsButton"
+            android:src="@drawable/ic_filter_frames_black_48dp"
+            android:padding="0dp"
+            android:adjustViewBounds="false"
+            android:clickable="true"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
 
 </FrameLayout>
