@@ -20,4 +20,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_negative">Negativo</string>
     <string name="text_mono">Monocromático</string>
+    <string name="text_sepia">Sépia</string>
+    <string name="text_laplaciano">Laplaciano</string>
+    <string name="text_border">Borda</string>
+    <string name="text_noeffect">Remover efeitos</string>
+    <string name="text_effect">Effects</string>
 </resources>
