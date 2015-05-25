@@ -18,12 +18,12 @@
         android:id="@+id/photoButton"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="20dp"
-        android:contentDescription="Take a pic"
-        android:src="@drawable/compact_camera"
-        android:padding="0dp"
+        android:contentDescription="@string/text_takepic"
+        android:src="@drawable/ic_camera_enhance_black_48dp"
         android:adjustViewBounds="false"
-        android:background="@android:color/transparent"
-        android:clickable="true" />
+        android:background="#c8ffffff"
+        android:clickable="true"
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:id="@+id/effects_container"
@@ -42,7 +42,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_filter_b_and_w_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:contentDescription="@string/text_negative" />
 
         <ImageButton
@@ -52,7 +52,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_monochrome_photos_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:contentDescription="@string/text_mono" />
 
         <ImageButton
@@ -61,7 +61,7 @@
             android:id="@+id/sephiaButton"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_filter_vintage_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:layout_gravity="center"
             android:contentDescription="@string/text_sepia" />
 
@@ -72,7 +72,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_texture_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:contentDescription="@string/text_laplaciano" />
 
         <ImageButton
@@ -82,7 +82,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_crop_free_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:contentDescription="@string/text_border" />
 
         <ImageButton
@@ -92,7 +92,7 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_photo_black_48dp"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:contentDescription="@string/text_noeffect" />
 
         <ImageButton
@@ -103,7 +103,7 @@
             android:padding="0dp"
             android:adjustViewBounds="false"
             android:clickable="true"
-            android:background="@android:color/transparent"
+            android:background="#c8ffffff"
             android:layout_gravity="center"
             android:contentDescription="@string/text_effect" />
     </LinearLayout>

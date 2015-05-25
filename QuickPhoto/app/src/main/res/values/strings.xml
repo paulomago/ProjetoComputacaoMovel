@@ -25,4 +25,6 @@
     <string name="text_border">Borda</string>
     <string name="text_noeffect">Remover efeitos</string>
     <string name="text_effect">Effects</string>
+    <string name="text_takepic">Take a pic</string>
+    <string name="text_delete">Apagar</string>
 </resources>
