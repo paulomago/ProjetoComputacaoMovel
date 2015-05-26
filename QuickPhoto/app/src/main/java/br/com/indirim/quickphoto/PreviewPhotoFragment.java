@@ -4,6 +4,7 @@ package br.com.indirim.quickphoto;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.io.File;
+import java.net.URI;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,6 +23,7 @@ import android.widget.ImageView;
 public class PreviewPhotoFragment extends Fragment {
 
     ImageView previewImage;
+    int THUMBNAIL_SIZE;
 
     public PreviewPhotoFragment() {
         // Required empty public constructor
@@ -40,7 +45,7 @@ public class PreviewPhotoFragment extends Fragment {
         String imagePath = getArguments().getString("br.com.indirim.quickphoto.IMAGE_PATH");
         Uri uri = Uri.parse(imagePath);
         previewImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        previewImage.setImageURI(uri);
+        previewImage.setImageBitmap(getPreview(uri, 200, 200));
     }
 
     public static PreviewPhotoFragment newInstance(String photoPath) {
@@ -56,5 +61,10 @@ public class PreviewPhotoFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+    }
+
+    Bitmap getPreview(Uri uri, int width, int height) {
+        Bitmap resized = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(uri.getPath()), width, height);
+        return resized;
     }
 }

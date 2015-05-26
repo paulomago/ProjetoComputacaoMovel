@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity
@@ -51,7 +54,7 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        String imagePath = getIntent().getStringExtra("br.com.indirim.quickphoto.IMAGE_PATH");
+        String imagePath = getIntent().getStringExtra(MainActivity.getCurrentImageName());
         PreviewPhotoFragment previewFragment = PreviewPhotoFragment.newInstance(imagePath);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -62,10 +65,26 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        Intent intent;
+
         switch(position)
         {
             case 0:
-                Intent intent = new Intent(this, CameraActivity.class);
+                intent = new Intent(this, CameraActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new GalleryFragment())
+                        .commit();
+                break;
+            case 2:
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(this, TutorialActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -104,5 +123,15 @@ public class MainActivity extends ActionBarActivity
         }*/
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static File getPhotoDirectory()
+    {
+        return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "QuickPhoto");
+    }
+
+    public static String getCurrentImageName()
+    {
+        return "br.com.indirim.quickphoto.IMAGE";
     }
 }

@@ -172,8 +172,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     @Override
     public void onResume() {
         super.onResume();
-        picsDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "QuickPhoto");
-        if (!picsDir.mkdirs()) {
+        picsDir = MainActivity.getPhotoDirectory();
+        if (!picsDir.exists() && !picsDir.mkdirs()) {
             Log.e("CameraFragment", "Falha ao criar o diretório de foto da aplicação");
         }
         camera = Camera.open();
@@ -228,7 +228,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
                         Intent intent = new Intent();
                         intent.setClass(activity, MainActivity.class);
-                        intent.putExtra("br.com.indirim.quickphoto.IMAGE_PATH", imageFile.getPath());
+                        intent.putExtra(MainActivity.getCurrentImageName(), imageFile.getAbsolutePath());
                         startActivity(intent);
                     } finally {
                         if (fos != null) {
