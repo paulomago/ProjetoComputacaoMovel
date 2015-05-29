@@ -3,15 +3,12 @@
     android:layout_height="match_parent"
     tools:context="br.com.indirim.quickphoto.PreviewPhotoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/previewImage"
         android:layout_gravity="top|left|bottom|right"
         android:background="@android:color/transparent"
-        android:src="@drawable/integrante1"
         android:scaleType="fitCenter" />
 
     <ImageButton

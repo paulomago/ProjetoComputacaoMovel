@@ -166,6 +166,8 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
             }
         });
 
+        toggleEffectButton();
+
         view.findViewById(R.id.photoButton).setOnClickListener(this);
     }
 

@@ -30,4 +30,6 @@
     <string name="title_activity_tutorial">TutorialActivity</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
