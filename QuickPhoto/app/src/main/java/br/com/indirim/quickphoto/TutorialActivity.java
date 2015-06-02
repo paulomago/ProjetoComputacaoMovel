@@ -47,7 +47,7 @@ public class TutorialActivity extends FragmentActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 intent.setClass(TutorialActivity.this, CameraActivity.class);
-                intent.putExtra(CameraActivity.SKIP_TUTORIAL, true);
+                //intent.putExtra(CameraActivity.SKIP_TUTORIAL, true);
                 startActivity(intent);
             }
         });

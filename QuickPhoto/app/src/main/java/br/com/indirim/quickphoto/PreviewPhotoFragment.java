@@ -2,8 +2,11 @@ package br.com.indirim.quickphoto;
 
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,7 +14,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.net.URI;
@@ -23,7 +28,6 @@ import java.net.URI;
 public class PreviewPhotoFragment extends Fragment {
 
     ImageView previewImage;
-    int THUMBNAIL_SIZE;
 
     public PreviewPhotoFragment() {
         // Required empty public constructor
@@ -42,17 +46,19 @@ public class PreviewPhotoFragment extends Fragment {
 
         previewImage = (ImageView) view.findViewById(R.id.previewImage);
 
-        String imagePath = getArguments().getString("br.com.indirim.quickphoto.IMAGE_PATH");
+        String imagePath = getArguments().getString(MainActivity.IMAGE_PATH);
+        int imageRotate = getArguments().getInt(MainActivity.IMAGE_ROTATE);
+
         Uri uri = Uri.parse(imagePath);
-        previewImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        previewImage.setImageBitmap(getPreview(uri, 200, 200));
+        setImageView(uri, imageRotate);
     }
 
-    public static PreviewPhotoFragment newInstance(String photoPath) {
+    public static PreviewPhotoFragment newInstance(String photoPath, int rotate) {
         PreviewPhotoFragment fragment = new PreviewPhotoFragment();
 
         Bundle args = new Bundle();
-        args.putString("br.com.indirim.quickphoto.IMAGE_PATH", photoPath);
+        args.putString(MainActivity.IMAGE_PATH, photoPath);
+        args.putInt(MainActivity.IMAGE_ROTATE, rotate);
         fragment.setArguments(args);
 
         return fragment;
@@ -63,8 +69,16 @@ public class PreviewPhotoFragment extends Fragment {
         super.onAttach(activity);
     }
 
-    Bitmap getPreview(Uri uri, int width, int height) {
-        Bitmap resized = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(uri.getPath()), width, height);
-        return resized;
+    private void setImageView(Uri uri, int rotate)
+    {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(rotate);
+
+        Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath());
+        bitmap = bitmap.createScaledBitmap(bitmap, bitmap.getScaledWidth(100), bitmap.getScaledHeight(100), false);
+        bitmap = Bitmap.createBitmap(bitmap , 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
+
+        previewImage.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        previewImage.setImageBitmap(bitmap);
     }
 }

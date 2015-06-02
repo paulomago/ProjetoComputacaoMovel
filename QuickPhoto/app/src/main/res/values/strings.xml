@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quick Photo</string>
+    <string name="app_name">QuickPhoto</string>
     <string name="title_activity_camera">Quick Photo</string>
 
     <string name="action_settings">Configurações</string>

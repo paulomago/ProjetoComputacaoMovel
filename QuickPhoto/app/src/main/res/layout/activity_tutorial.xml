@@ -38,7 +38,7 @@
     <Button
         android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:text="Pular Tutorial"
+        android:text="Fechar Tutorial"
         android:id="@+id/skipButton"
         android:layout_gravity="bottom|center"
         android:clickable="false"

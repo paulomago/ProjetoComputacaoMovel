@@ -9,5 +9,10 @@
             android:summary="Marque esta opção para não ver o tutorial ao iniciar o aplicativo"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="skip_camera_checkbox"
+            android:title="Entrar direto na tela principal"
+            android:summary="Marque esta opção para não entrar na tela de camera"
+            android:defaultValue="false" />
     </PreferenceCategory>
 </PreferenceScreen>

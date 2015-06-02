@@ -230,7 +230,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
                         Intent intent = new Intent();
                         intent.setClass(activity, MainActivity.class);
-                        intent.putExtra(MainActivity.getCurrentImageName(), imageFile.getAbsolutePath());
+                        intent.putExtra(MainActivity.IMAGE_PATH, imageFile.getAbsolutePath());
                         startActivity(intent);
                     } finally {
                         if (fos != null) {

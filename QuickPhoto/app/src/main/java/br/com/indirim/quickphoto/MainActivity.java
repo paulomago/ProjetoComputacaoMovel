@@ -1,8 +1,13 @@
 package br.com.indirim.quickphoto;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Environment;
-import android.support.v4.app.Fragment;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +21,13 @@ import java.io.File;
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+
+    public static final String SKIP_TUTORIAL_CHECKBOX = "skip_tutorial_checkbox";
+    public static final String SKIP_CAMERA_CHECKBOX = "skip_camera_checkbox";
+    public static final String IMAGE_PATH = "IMAGE_PATH";
+    public static final String IMAGE_ROTATE = "IMAGE_ROTATE";
+
+    private static final int SELECT_PICTURE = 1;
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -41,19 +53,34 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        String imagePath = getIntent().getStringExtra(MainActivity.getCurrentImageName());
+        String imagePath = getIntent().getStringExtra(MainActivity.IMAGE_PATH);
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (imagePath != null)
+        if (imagePath == null) {
+            SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
+
+            boolean skipTutorialConfig = preference.getBoolean(MainActivity.SKIP_TUTORIAL_CHECKBOX, false);
+
+            if (!skipTutorialConfig) {
+                Intent intent = new Intent(this, TutorialActivity.class);
+                startActivity(intent);
+            } else {
+                boolean skipCameraConfig = preference.getBoolean(MainActivity.SKIP_CAMERA_CHECKBOX, false);
+
+                if (!skipCameraConfig) {
+                    Intent intent = new Intent(this, CameraActivity.class);
+                    startActivity(intent);
+                } else {
+                    carregarGaleria();
+                }
+            }
+        }
+        else
         {
-            PreviewPhotoFragment previewFragment = PreviewPhotoFragment.newInstance(imagePath);
+            PreviewPhotoFragment previewFragment = PreviewPhotoFragment.newInstance(imagePath, 90);
 
             fragmentManager.beginTransaction()
                     .replace(R.id.container, previewFragment)
-                    .commit();
-        } else {
-            fragmentManager.beginTransaction()
-                    .replace(R.id.container, new GalleryFragment())
                     .commit();
         }
     }
@@ -61,19 +88,15 @@ public class MainActivity extends ActionBarActivity
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         Intent intent;
-        FragmentManager fragmentManager = getSupportFragmentManager();
 
         switch(position)
         {
             case 0:
                 intent = new Intent(this, CameraActivity.class);
-                intent.putExtra(CameraActivity.SKIP_TUTORIAL, true);
                 startActivity(intent);
                 break;
             case 1:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, new GalleryFragment())
-                        .commit();
+                carregarGaleria();
                 break;
             case 2:
                 intent = new Intent(this, SettingsActivity.class);
@@ -83,7 +106,19 @@ public class MainActivity extends ActionBarActivity
                 intent = new Intent(this, TutorialActivity.class);
                 startActivity(intent);
                 break;
+            case 4:
+                intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                break;
         }
+    }
+
+    public void carregarGaleria(){
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        //intent.setData(Uri.parse(MainActivity.getPhotoDirectory().getPath()));
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        startActivityForResult(intent, 1);
     }
 
     public void restoreActionBar() {
@@ -106,28 +141,55 @@ public class MainActivity extends ActionBarActivity
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_settings) {
-            return true;
-        }*/
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public static File getPhotoDirectory()
     {
         return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "QuickPhoto");
     }
 
-    public static String getCurrentImageName()
-    {
-        return "br.com.indirim.quickphoto.IMAGE";
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+            if (requestCode == SELECT_PICTURE) {
+                Uri selectedImageUri = data.getData();
+                String selectedImagePath = getPath(selectedImageUri);
+
+                Activity activity = getParent();
+
+                PreviewPhotoFragment previewFragment = PreviewPhotoFragment.newInstance(selectedImagePath, -90);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, previewFragment)
+                        .commit();
+            }
+        }
+    }
+
+    /**
+     * auxiliar para saber o caminho de uma imagem URI
+     */
+    protected String getPath(Uri uri) {
+
+        if( uri == null ) {
+            // TODO realizar algum log ou feedback do utilizador
+            return null;
+        }
+
+        // Tenta recuperar a imagem da media store primeiro
+        // Isto só irá funcionar para as imagens selecionadas da galeria
+
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+
+        if( cursor != null ){
+            int column_index = cursor
+                    .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        }
+
+        return uri.getPath();
     }
 }

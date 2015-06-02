@@ -16,20 +16,24 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".CameraActivity"
-            android:label="QuickPhoto" >
+            android:label="QuickPhoto"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.indirim.quickphoto.MainActivity" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="QuickPhoto"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="QuickPhoto"
-            android:parentActivityName=".CameraActivity" >
-        </activity>
-        <activity
             android:name=".TutorialActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:configChanges="keyboardHidden|screenSize"
             android:label="Tutorial"
             android:screenOrientation="portrait"
             android:theme="@style/FullscreenTheme" >
@@ -39,6 +43,16 @@
             android:label="Configurações"
             android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="br.com.indirim.quickphoto.MainActivity" />
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:label="Sobre"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="br.com.indirim.quickphoto.MainActivity" />

@@ -10,14 +10,4 @@
         android:layout_gravity="top|left|bottom|right"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter" />
-
-    <ImageButton
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:id="@+id/deleteButton"
-        android:layout_gravity="bottom|right"
-        android:src="@drawable/ic_delete_black_48dp"
-        android:layout_margin="10dp"
-        android:background="#c8ffffff"
-        android:contentDescription="@string/text_delete" />
 </FrameLayout>
