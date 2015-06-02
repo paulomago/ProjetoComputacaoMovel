@@ -76,22 +76,10 @@ public class TutorialPagerFragment extends Fragment {
             case 3:
                 id = R.drawable.screen3;
                 break;
-            case 4:
-                id = R.drawable.screen4;
-                break;
-            case 5:
-                id = R.drawable.screen5;
-                break;
-            case 6:
-                id = R.drawable.screen6;
-                break;
-            case 7:
-                id = R.drawable.screen7;
-                break;
         }
 
         Bitmap bitmap = BitmapFactory.decodeResource(res, id);
-        bitmap = bitmap.createScaledBitmap(bitmap, bitmap.getScaledWidth(100), bitmap.getScaledHeight(100), false);
+        //bitmap = bitmap.createScaledBitmap(bitmap, bitmap.getScaledWidth(100), bitmap.getScaledHeight(100), false);
         tutorialImageContainer.setImageBitmap(bitmap);
     }
 }

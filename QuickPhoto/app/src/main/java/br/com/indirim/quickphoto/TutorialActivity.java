@@ -61,7 +61,7 @@ public class TutorialActivity extends FragmentActivity {
     }
 
     public static class TutorialActivityPagerAdapter extends FragmentPagerAdapter {
-        private static int NUM_ITEMS = 8;
+        private static int NUM_ITEMS = 4;
 
         public TutorialActivityPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
