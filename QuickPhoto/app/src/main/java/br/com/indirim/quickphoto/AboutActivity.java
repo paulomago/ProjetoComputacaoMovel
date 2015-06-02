@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Tela principal sobre o aplicativo, nela é carregada a informação dos integrantes do grupo: Nome, foto e RA.
+ * @link AboutPagerFragment
  */
 public class AboutActivity extends FragmentActivity {
     FragmentPagerAdapter adapterViewPager;
@@ -68,7 +69,7 @@ public class AboutActivity extends FragmentActivity {
         /**
          * Retorna o nome dos integrantes para ser utilizado como título da página
          *
-         * @param posição no array do nome do integrante
+         * @param position posição no array do nome do integrante
          * @return nome do integrante
          */
         @Override

@@ -30,7 +30,8 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragmento responsável pela captura da câmera, aplicação dos filtros e armazenamento da imagem.
+ * @link CameraActivity
  */
 public class CameraFragment extends Fragment implements View.OnClickListener, SurfaceHolder.Callback {
 
@@ -61,8 +62,14 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
      */
     private SurfaceView surfaceView;
 
+    /**
+     * Botão de exibição dos eventos
+     */
     private ImageButton effectsButton;
 
+    /**
+     * Botão dos efeitos
+     */
     private ImageButton negativeButton;
     private ImageButton monoButton;
     private ImageButton laplacianButton;
@@ -70,6 +77,9 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     private ImageButton borderButton;
     private ImageButton normalButton;
 
+    /**
+     * Diretório de armazemaneot da imagem
+     */
     private File picsDir;
 
     private Camera.Parameters cParameters;
@@ -83,14 +93,14 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_camera, container, false);
     }
 
-    Fragment effectsFragment;
-    LinearLayout effects_container;
-
+    /**
+     * Método auxiliar responsável por alternar a exibição de uma botão
+     * @param b botão a ser manipulado
+     */
     private void toggleButtonVisibility(ImageButton b)
     {
         if (b.getVisibility() == View.INVISIBLE)
@@ -101,6 +111,9 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
         }
     }
 
+    /**
+     * Método responsável por alternar a exibição de todos os botões de efeito.
+     */
     private void toggleEffectButton()
     {
         toggleButtonVisibility(negativeButton);
@@ -195,7 +208,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener, Su
 
     /**
      * Called when a view has been clicked.
-     *
      * @param v The view that was clicked.
      */
     @Override

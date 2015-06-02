@@ -3,6 +3,10 @@ package br.com.indirim.quickphoto;
 import android.app.Activity;
 import android.os.Bundle;
 
+/**
+ * Tela principal de captura da câmera
+ * @link CameraFragment
+ */
 public class CameraActivity extends Activity {
 
     @Override
@@ -13,10 +17,5 @@ public class CameraActivity extends Activity {
         getFragmentManager().beginTransaction()
                 .replace(R.id.main_container, CameraFragment.newInstance())
                 .commit();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 }

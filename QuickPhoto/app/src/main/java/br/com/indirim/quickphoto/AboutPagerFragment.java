@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 /**
  * Fragment representando cada página da About, nela é includa a Foto eo RA do integrante.
+ * @link AboutActivity
  */
 public class AboutPagerFragment extends Fragment {
     private int page;
@@ -25,7 +26,7 @@ public class AboutPagerFragment extends Fragment {
 
     /**
      * Método responsável por criar uma nova instância do fragmento
-     * @param Número da página criada
+     * @param page Número da página criada
      * @return Uma nova instância do AboutPagerFragment
      */
     public static AboutPagerFragment newInstance(int page) {
