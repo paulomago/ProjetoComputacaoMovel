@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Fragment representando cada página da About, nela é includa a Foto eo RA do integrante.
+ * Fragment representando cada p&aacute;gina da About, nela &eacute; includa a Foto eo RA do integrante.
  * @link AboutActivity
  */
 public class AboutPagerFragment extends Fragment {
@@ -25,9 +25,9 @@ public class AboutPagerFragment extends Fragment {
     private TextView numero_ra;
 
     /**
-     * Método responsável por criar uma nova instância do fragmento
-     * @param page Número da página criada
-     * @return Uma nova instância do AboutPagerFragment
+     * M&eacute;todo respons&aacute;vel por criar uma nova inst&acirc;ncia do fragmento
+     * @param page N&uacute;mero da p&aacute;gina criada
+     * @return Uma nova inst&acirc;ncia do AboutPagerFragment
      */
     public static AboutPagerFragment newInstance(int page) {
         AboutPagerFragment fragmentFirst = new AboutPagerFragment();
@@ -57,7 +57,7 @@ public class AboutPagerFragment extends Fragment {
     }
 
     /**
-     * Define qual o RA será exibido na tela
+     * Define qual o RA ser&aacute; exibido na tela
      */
     private void setRA()
     {
@@ -73,7 +73,7 @@ public class AboutPagerFragment extends Fragment {
     }
 
     /**
-     * Define qual foto será exibida.
+     * Define qual foto ser&aacute; exibida.
      */
     private void setImageView()
     {

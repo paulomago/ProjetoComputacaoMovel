@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 /**
- * Tela principal de captura da câmera
+ * Tela principal de captura da c&acirc;mera
  * @link CameraFragment
  */
 public class CameraActivity extends Activity {

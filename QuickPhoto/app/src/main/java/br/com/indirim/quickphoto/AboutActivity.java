@@ -13,7 +13,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 /**
- * Tela principal sobre o aplicativo, nela é carregada a informação dos integrantes do grupo: Nome, foto e RA.
+ * Tela principal sobre o aplicativo, nela &eacute; carregada a informa&ccedil;&atilde;o dos integrantes do grupo: Nome, foto e RA.
  * @link AboutPagerFragment
  */
 public class AboutActivity extends FragmentActivity {
@@ -42,7 +42,7 @@ public class AboutActivity extends FragmentActivity {
     }
 
     /**
-     * Adapter responsável por fazer a paginação das informações dos integrantes do trabalho.
+     * Adapter respons&aacute;vel por fazer a pagina&ccedil;&atilde;o das informa&ccedil;&otilde;es dos integrantes do trabalho.
      */
     public static class AboutActivityPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 5;
@@ -52,7 +52,7 @@ public class AboutActivity extends FragmentActivity {
         }
 
         /**
-         * Retorna o número total de integrantes do trabalho
+         * Retorna o n&uacute;mero total de integrantes do trabalho
          * @return numero de integrantes
          */
         @Override
@@ -67,9 +67,9 @@ public class AboutActivity extends FragmentActivity {
         }
 
         /**
-         * Retorna o nome dos integrantes para ser utilizado como título da página
+         * Retorna o nome dos integrantes para ser utilizado como t&iacute;tulo da p&aacute;gina
          *
-         * @param position posição no array do nome do integrante
+         * @param position posi&ccedil;&atilde;o no array do nome do integrante
          * @return nome do integrante
          */
         @Override

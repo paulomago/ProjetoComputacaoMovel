@@ -178,7 +178,7 @@ public class MainActivity extends ActionBarActivity
         }
 
         // Tenta recuperar a imagem da media store primeiro
-        // Isto só irá funcionar para as imagens selecionadas da galeria
+        // Isto s&oacute; ir&aacute; funcionar para as imagens selecionadas da galeria
 
         String[] projection = { MediaStore.Images.Media.DATA };
         Cursor cursor = managedQuery(uri, projection, null, null, null);
