@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Paulo on 30/05/2015.
+ * Fragment representando cada página da About, nela é includa a Foto eo RA do integrante.
  */
 public class AboutPagerFragment extends Fragment {
     private int page;
@@ -23,6 +23,11 @@ public class AboutPagerFragment extends Fragment {
     public static String CURRENT_PAGE = "current_page";
     private TextView numero_ra;
 
+    /**
+     * Método responsável por criar uma nova instância do fragmento
+     * @param Número da página criada
+     * @return Uma nova instância do AboutPagerFragment
+     */
     public static AboutPagerFragment newInstance(int page) {
         AboutPagerFragment fragmentFirst = new AboutPagerFragment();
         Bundle args = new Bundle();
@@ -50,6 +55,9 @@ public class AboutPagerFragment extends Fragment {
         return view;
     }
 
+    /**
+     * Define qual o RA será exibido na tela
+     */
     private void setRA()
     {
         ArrayList<String> ras = new ArrayList<String>();
@@ -63,6 +71,9 @@ public class AboutPagerFragment extends Fragment {
         numero_ra.setText(ras.get(page));
     }
 
+    /**
+     * Define qual foto será exibida.
+     */
     private void setImageView()
     {
         Resources res = this.getResources();
