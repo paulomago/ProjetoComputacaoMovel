@@ -8,7 +8,7 @@ import android.os.Bundle;
  * @link CameraFragment
  */
 public class CameraActivity extends Activity {
-
+    // chamado quando a atividade e criada pela primira vez
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
